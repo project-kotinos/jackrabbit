@@ -1,0 +1,15 @@
+dependencies:
+  build:
+   - maven:3.5.4
+   - java:11.0.8
+
+build_targets:
+  - name: default
+    container:
+      image: yourbase/yb_ubuntu:18.04
+    commands:
+      - mvn -B install -Ppedantic,integrationTesting -Dmongo.port=99999 -Dcheckstyle.skip=true -Dfindbugs.skip=true -DtrimStackTrace=false
+ci:
+  builds:
+    - name: default
+      build_target: default
