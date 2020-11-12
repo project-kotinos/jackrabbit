@@ -1,7 +1,7 @@
 dependencies:
   build:
-   - maven:3.5.4
-   - java:11.0.8
+   - maven:3.3.3
+   - java:8.252.09
 
 build_targets:
   - name: default
