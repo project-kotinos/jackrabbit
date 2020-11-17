@@ -7,8 +7,13 @@ build_targets:
   - name: default
     container:
       image: yourbase/yb_ubuntu:18.04
+    environement:
+      - SKIPPER_IGNORE=mvn install
     commands:
-      - mvn -B install -Ppedantic,integrationTesting -Dmongo.port=99999 -Dcheckstyle.skip=true -Dfindbugs.skip=true -DtrimStackTrace=false
+      - mvn install
+      # For now, I only have unit tests on.  Their integration tests include
+      # custom test frameworks
+      #- mvn -B install -Ppedantic,integrationTesting -Dmongo.port=99999 -Dcheckstyle.skip=true -Dfindbugs.skip=true -DtrimStackTrace=false
 ci:
   builds:
     - name: default
